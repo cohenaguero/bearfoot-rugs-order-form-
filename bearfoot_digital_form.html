@@ -15,10 +15,8 @@
   body { background: #e8dcc8; font-family: 'Libre Baskerville', serif; color: var(--text); min-height: 100vh; padding: 30px 16px 60px; background-image: radial-gradient(ellipse at 10% 0%, rgba(196,137,42,0.15) 0%, transparent 50%), radial-gradient(ellipse at 90% 100%, rgba(122,74,30,0.12) 0%, transparent 50%); }
   .form-card { max-width: 720px; margin: 0 auto; background: var(--cream); border-radius: 4px; box-shadow: 0 8px 40px rgba(74,36,8,0.18); overflow: hidden; }
   .top-band { height: 6px; background: linear-gradient(90deg, var(--brown-dark), var(--gold), var(--brown-dark)); }
-
-  /* Setup banner */
-  .setup-banner { background: #fffbf0; border-left: 4px solid var(--gold); padding: 18px 24px; margin: 0; }
-  .setup-banner h4 { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--brown-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .setup-banner { background: #fffbf0; border-left: 4px solid var(--gold); padding: 18px 24px; }
+  .setup-banner h4 { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--brown-dark); margin-bottom: 10px; }
   .setup-steps { list-style: none; counter-reset: steps; }
   .setup-steps li { counter-increment: steps; font-size: 11px; color: #5a3010; line-height: 1.7; padding: 4px 0 4px 28px; position: relative; }
   .setup-steps li::before { content: counter(steps); position: absolute; left: 0; width: 20px; height: 20px; background: var(--brown-dark); color: white; border-radius: 50%; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; top: 5px; }
@@ -26,14 +24,11 @@
   .url-row { display: flex; gap: 8px; margin-top: 12px; }
   .url-row input { flex: 1; border: 1.5px solid var(--brown-light); border-radius: 4px; padding: 8px 12px; font-size: 11px; font-family: monospace; outline: none; background: white; color: var(--text); }
   .url-row input:focus { border-color: var(--brown-dark); }
-  .url-row input::placeholder { color: #bbb; }
   .url-save-btn { background: var(--brown-dark); color: white; border: none; border-radius: 4px; padding: 8px 16px; font-size: 10px; font-weight: 700; cursor: pointer; white-space: nowrap; letter-spacing: 1px; text-transform: uppercase; font-family: 'Libre Baskerville', serif; transition: background 0.2s; }
   .url-save-btn:hover { background: var(--brown-mid); }
   .url-connected { display: none; align-items: center; gap: 8px; margin-top: 10px; font-size: 11px; color: #2a6a2a; font-weight: 700; }
   .url-connected .dot { width: 10px; height: 10px; background: #3c8c3c; border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-  /* Header */
   .header { padding: 28px 36px 22px; border-bottom: 2px solid var(--brown-mid); display: flex; align-items: center; justify-content: center; gap: 20px; background: linear-gradient(180deg, #fff9f0 0%, var(--cream) 100%); }
   .header-bear { width: 72px; height: 72px; object-fit: contain; }
   .header-logo { width: 84px; height: 84px; object-fit: contain; border-radius: 50%; border: 2px solid var(--gold); background: white; padding: 3px; }
@@ -41,13 +36,11 @@
   .brand-name { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 900; color: var(--brown-dark); line-height: 1; }
   .brand-tagline { display: block; font-size: 11px; color: #8b5e2e; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
   .form-subtitle { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; color: var(--brown-mid); letter-spacing: 4px; text-transform: uppercase; margin-top: 6px; border-top: 1px solid var(--gold); padding-top: 5px; }
-
   .form-body { padding: 28px 36px 36px; }
   .section { margin-bottom: 28px; }
   .section-title { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700; color: var(--brown-dark); text-transform: uppercase; letter-spacing: 2.5px; display: flex; align-items: center; gap: 7px; margin-bottom: 14px; }
   .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold), transparent); }
   .paw { color: var(--gold); font-size: 11px; }
-
   .field-row { display: grid; gap: 14px 20px; }
   .field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .field { display: flex; flex-direction: column; gap: 5px; }
@@ -56,7 +49,6 @@
   .field input:focus, .field textarea:focus { border-bottom-color: var(--brown-dark); }
   .field textarea { border: 1.5px solid var(--brown-light); border-radius: 4px; padding: 10px; resize: vertical; min-height: 100px; background: rgba(255,255,255,0.5); }
   .field textarea:focus { border-color: var(--brown-dark); }
-
   .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .size-card { border: 1.5px solid var(--brown-light); border-radius: 5px; padding: 12px 14px; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.4); position: relative; }
   .size-card:hover { border-color: var(--brown-mid); background: rgba(196,137,42,0.06); }
@@ -69,7 +61,6 @@
   .size-dim { font-size: 9.5px; color: var(--brown-mid); font-weight: 700; margin-top: 2px; }
   .size-price { font-size: 13px; font-weight: 700; color: var(--gold); margin-top: 4px; font-family: 'Playfair Display', serif; }
   .size-desc { font-size: 8px; color: #8b5e2e; font-style: italic; margin-top: 2px; }
-
   .color-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 10px; }
   .color-option { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 8px; border-radius: 4px; border: 1.5px solid transparent; transition: all 0.15s; }
   .color-option:hover { background: rgba(196,137,42,0.07); border-color: var(--brown-light); }
@@ -79,45 +70,36 @@
   .color-cb { width: 14px; height: 14px; border: 1.5px solid var(--brown-light); border-radius: 3px; background: white; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.15s; }
   .color-option.selected .color-cb { background: var(--brown-dark); border-color: var(--brown-dark); color: white; }
   .color-label { font-size: 8.5px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.3px; }
-
   .photo-note { margin-top: 10px; font-size: 9px; color: var(--brown-mid); font-style: italic; text-align: center; background: rgba(196,137,42,0.08); border: 1px dashed var(--gold); border-radius: 4px; padding: 8px 12px; }
   .photo-note strong { font-style: normal; color: var(--brown-dark); }
-
   .date-total-row { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 14px 20px; align-items: end; }
   .total-box { border: 2px solid var(--brown-mid); border-radius: 5px; padding: 10px 14px; background: rgba(255,255,255,0.5); position: relative; }
   .total-box label { font-size: 8.5px; font-weight: 700; color: var(--brown-mid); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px; }
-  .total-display { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--brown-dark); line-height: 1; padding: 4px 0 2px; border-bottom: 1.5px solid var(--brown-light); min-height: 36px; transition: all 0.3s; display: flex; align-items: center; }
+  .total-display { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--brown-dark); line-height: 1; padding: 4px 0 2px; border-bottom: 1.5px solid var(--brown-light); min-height: 36px; display: flex; align-items: center; }
   .total-display.empty { color: #c4b09a; font-size: 14px; font-style: italic; font-weight: 400; }
   @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.08);color:var(--gold)} 100%{transform:scale(1)} }
   .total-display.pop { animation: pop 0.25s ease; }
   .total-lock { position: absolute; top: 10px; right: 12px; font-size: 11px; opacity: 0.4; }
-
   .submit-btn { width: 100%; padding: 16px; background: var(--brown-dark); color: white; border: none; border-radius: 4px; font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin-top: 24px; }
   .submit-btn:hover:not(:disabled) { background: var(--brown-mid); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(74,36,8,0.25); }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
   .success-msg { display: none; text-align: center; padding: 24px; background: rgba(60,140,60,0.08); border: 1px solid #3c8c3c; border-radius: 4px; margin-top: 20px; }
   .success-msg .icon { font-size: 36px; display: block; margin-bottom: 10px; }
   .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: #1a4a1a; margin-bottom: 6px; }
   .success-msg p { font-size: 11px; color: #2a5a2a; line-height: 1.6; }
-
   .sending-msg { display: none; text-align: center; padding: 14px; font-size: 12px; color: var(--brown-mid); font-style: italic; margin-top: 16px; }
-
   .error-msg { font-size: 8px; color: #cc2222; margin-top: 4px; font-style: italic; display: none; }
   .error-msg.show { display: block; }
   .field input.error { border-bottom-color: #cc2222; }
-
   .form-footer { text-align: center; padding: 16px 36px; border-top: 1px solid var(--gold); font-size: 8.5px; color: #8b5e2e; letter-spacing: 1px; background: linear-gradient(180deg, var(--cream) 0%, #f5ead8 100%); }
   .footer-paws { color: var(--gold); font-size: 10px; letter-spacing: 5px; margin-bottom: 4px; opacity: 0.6; }
   .bottom-band { height: 6px; background: linear-gradient(90deg, var(--brown-dark), var(--gold), var(--brown-dark)); }
-
   .qr-section { margin: 40px auto 0; max-width: 720px; background: var(--cream); border-radius: 4px; box-shadow: 0 4px 20px rgba(74,36,8,0.12); padding: 28px 36px; display: flex; align-items: center; gap: 28px; border: 2px solid var(--brown-mid); }
   .qr-text { flex: 1; }
   .qr-text h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--brown-dark); margin-bottom: 6px; }
   .qr-text p { font-size: 11px; color: #8b5e2e; line-height: 1.6; }
   .qr-text .phone { display: inline-block; margin-top: 8px; font-weight: 700; color: var(--brown-dark); font-size: 13px; }
   #qrcode { background: white; padding: 10px; border: 2px solid var(--gold); border-radius: 4px; flex-shrink: 0; }
-
   @media (max-width: 600px) {
     .header { flex-direction: column; gap: 10px; padding: 20px; }
     .form-body { padding: 20px; }
@@ -139,10 +121,10 @@
   <div class="setup-banner" id="setupBanner">
     <h4>🔧 One-time setup — Connect to Google Sheets</h4>
     <ol class="setup-steps">
-      <li>Go to <strong>Google Sheets</strong> and create a new blank spreadsheet. Name it <strong>Bearfoot Rug Orders</strong>.</li>
-      <li>Click <strong>Extensions → Apps Script</strong>. Delete any code there and paste in the entire contents of the file <code>google_apps_script.gs</code> (downloaded alongside this form). Click 💾 Save.</li>
-      <li>Click <strong>Deploy → New deployment</strong>. Set type to <strong>Web app</strong>. Set "Execute as" to <strong>Me</strong> and "Who has access" to <strong>Anyone</strong>. Click <strong>Deploy</strong> and authorize when prompted.</li>
-      <li>Copy the <strong>Web app URL</strong> it gives you (looks like <code>https://script.google.com/macros/s/ABC.../exec</code>) and paste it below, then click Save.</li>
+      <li>Go to <strong>Google Sheets</strong> and create a new blank spreadsheet named <strong>Bearfoot Rug Orders</strong>.</li>
+      <li>Click <strong>Extensions → Apps Script</strong>, paste in the <code>google_apps_script.gs</code> file contents, and save.</li>
+      <li>Click <strong>Deploy → New deployment → Web app</strong>. Set access to <strong>Anyone</strong>, click Deploy and authorize.</li>
+      <li>Copy the Web App URL and paste it below, then click Save.</li>
     </ol>
     <div class="url-row">
       <input type="text" id="scriptUrlInput" placeholder="Paste your Google Apps Script Web App URL here...">
@@ -167,7 +149,6 @@
   <div class="form-body">
     <form id="orderForm" novalidate>
 
-      <!-- Customer Info -->
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Customer Information</div>
         <div class="field-row cols-3">
@@ -188,7 +169,6 @@
         </div>
       </div>
 
-      <!-- Rug Size -->
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Rug Size</div>
         <div class="size-grid">
@@ -197,7 +177,7 @@
             <div class="size-check"></div>
             <div class="size-name">Cub</div>
             <div class="size-dim">1 × 2 ft</div>
-            <div class="size-price">0</div>
+            <div class="size-price">$40</div>
             <div class="size-desc">Smallest — perfect accent piece</div>
           </label>
           <label class="size-card" data-price="50">
@@ -205,7 +185,7 @@
             <div class="size-check"></div>
             <div class="size-name">Grizzly</div>
             <div class="size-dim">1.5 × 2.5 ft</div>
-            <div class="size-price">0</div>
+            <div class="size-price">$50</div>
             <div class="size-desc">Mid-size — great statement rug</div>
           </label>
           <label class="size-card" data-price="65">
@@ -213,14 +193,13 @@
             <div class="size-check"></div>
             <div class="size-name">Polar</div>
             <div class="size-dim">2 × 3 ft</div>
-            <div class="size-price">5</div>
+            <div class="size-price">$65</div>
             <div class="size-desc">Largest — full floor coverage</div>
           </label>
         </div>
         <span class="error-msg" id="size-err" style="margin-top:6px;">Please select a size</span>
       </div>
 
-      <!-- Colors -->
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Color Selection <span style="font-size:8.5px;font-weight:400;font-style:italic;color:#8b5e2e;letter-spacing:1px;">(choose 1–3)</span></div>
         <div class="color-grid">
@@ -239,7 +218,6 @@
         <span class="error-msg" id="color-err" style="margin-top:6px;">Please select 1–3 colors</span>
       </div>
 
-      <!-- Description -->
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Rug Description</div>
         <div class="field">
@@ -251,7 +229,6 @@
         </div>
       </div>
 
-      <!-- Order Details -->
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Order Details</div>
         <div class="date-total-row">
@@ -303,13 +280,12 @@
 </div>
 
 <script>
-  // ── Script URL storage ──
   var SCRIPT_URL = localStorage.getItem('bearfoot_script_url') || '';
 
   function saveScriptUrl() {
     var val = document.getElementById('scriptUrlInput').value.trim();
     if (!val || !val.startsWith('https://script.google.com')) {
-      alert('Please paste a valid Google Apps Script URL (starts with https://script.google.com)');
+      alert('Please paste a valid Google Apps Script URL');
       return;
     }
     SCRIPT_URL = val;
@@ -323,13 +299,8 @@
     document.getElementById('scriptUrlInput').style.borderColor = '#3c8c3c';
   }
 
-  // On load, restore saved URL
-  if (SCRIPT_URL) {
-    document.getElementById('scriptUrlInput').value = SCRIPT_URL;
-    showConnected();
-  }
+  if (SCRIPT_URL) { document.getElementById('scriptUrlInput').value = SCRIPT_URL; showConnected(); }
 
-  // ── Size selection + auto price ──
   document.querySelectorAll('.size-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.size-card').forEach(function(c) { c.classList.remove('selected'); });
@@ -345,7 +316,6 @@
     });
   });
 
-  // ── Color selection (max 3) ──
   document.querySelectorAll('.color-option').forEach(function(opt) {
     opt.addEventListener('click', function() {
       var cb = opt.querySelector('input[type="checkbox"]');
@@ -364,7 +334,6 @@
     opt.querySelector('input').addEventListener('click', function(e) { e.stopPropagation(); });
   });
 
-  // ── Auto-fill dates ──
   var today = new Date();
   var promise = new Date(today);
   promise.setDate(promise.getDate() + 14);
@@ -372,41 +341,30 @@
   document.getElementById('orderDate').value = fmt(today);
   document.getElementById('promiseDate').value = fmt(promise);
 
-  // ── Form submit ──
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var valid = true;
-
     var name = document.getElementById('name');
     var nameErr = document.getElementById('name-err');
     if (!name.value.trim()) { name.classList.add('error'); nameErr.classList.add('show'); valid = false; }
     else { name.classList.remove('error'); nameErr.classList.remove('show'); }
-
     var phone = document.getElementById('phone');
     var phoneErr = document.getElementById('phone-err');
     if (!phone.value.trim()) { phone.classList.add('error'); phoneErr.classList.add('show'); valid = false; }
     else { phone.classList.remove('error'); phoneErr.classList.remove('show'); }
-
     var size = document.querySelector('input[name="size"]:checked');
     var sizeErr = document.getElementById('size-err');
-    if (!size) { sizeErr.classList.add('show'); valid = false; }
-    else { sizeErr.classList.remove('show'); }
-
+    if (!size) { sizeErr.classList.add('show'); valid = false; } else { sizeErr.classList.remove('show'); }
     var colors = document.querySelectorAll('input[name="colors"]:checked');
     var colorErr = document.getElementById('color-err');
-    if (colors.length === 0) { colorErr.classList.add('show'); valid = false; }
-    else { colorErr.classList.remove('show'); }
-
+    if (colors.length === 0) { colorErr.classList.add('show'); valid = false; } else { colorErr.classList.remove('show'); }
     if (!valid) return;
 
     var colorList = Array.from(colors).map(function(c) { return c.value; }).join(', ');
-
     var payload = {
-      name: name.value.trim(),
-      phone: phone.value.trim(),
+      name: name.value.trim(), phone: phone.value.trim(),
       email: document.getElementById('email').value.trim(),
-      size: size.value,
-      colors: colorList,
+      size: size.value, colors: colorList,
       description: document.getElementById('description').value.trim(),
       orderDate: document.getElementById('orderDate').value,
       promiseDate: document.getElementById('promiseDate').value,
@@ -419,7 +377,6 @@
     sending.style.display = 'block';
 
     if (!SCRIPT_URL) {
-      // No sheet connected — just show success anyway
       setTimeout(function() {
         sending.style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
@@ -428,10 +385,8 @@
       return;
     }
 
-    // Send to Google Sheets via Apps Script
     fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     }).then(function() {
@@ -445,10 +400,10 @@
     });
   });
 
-  // ── QR Code ──
+  // QR code pointed at your live GitHub Pages URL
   new QRCode(document.getElementById("qrcode"), {
-    text: window.location.href,
-    width: 120, height: 120,
+    text: "https://cohenaguero.github.io/bearfoot-rugs-order-form-/",
+    width: 150, height: 150,
     colorDark: "#4a2408", colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.H
   });
