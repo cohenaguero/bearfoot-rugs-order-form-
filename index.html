@@ -44,15 +44,20 @@
   .size-dim { font-size: 9.5px; color: var(--brown-mid); font-weight: 700; margin-top: 2px; }
   .size-price { font-size: 13px; font-weight: 700; color: var(--gold); margin-top: 4px; font-family: 'Playfair Display', serif; }
   .size-desc { font-size: 8px; color: #8b5e2e; font-style: italic; margin-top: 2px; }
+
+  /* Color grid */
+  .color-limit-note { font-size: 9px; color: #8b5e2e; font-style: italic; margin-bottom: 10px; }
   .color-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 10px; }
-  .color-option { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 8px; border-radius: 4px; border: 1.5px solid transparent; transition: all 0.15s; }
-  .color-option:hover { background: rgba(196,137,42,0.07); border-color: var(--brown-light); }
+  .color-option { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 8px; border-radius: 4px; border: 1.5px solid transparent; transition: all 0.2s; user-select: none; }
+  .color-option:hover:not(.maxed) { background: rgba(196,137,42,0.07); border-color: var(--brown-light); }
   .color-option.selected { border-color: var(--brown-mid); background: rgba(196,137,42,0.1); }
+  .color-option.maxed { opacity: 0.38; cursor: not-allowed; }
   .color-option input[type="checkbox"] { display: none; }
   .color-swatch { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid rgba(0,0,0,0.15); flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
   .color-cb { width: 14px; height: 14px; border: 1.5px solid var(--brown-light); border-radius: 3px; background: white; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.15s; }
   .color-option.selected .color-cb { background: var(--brown-dark); border-color: var(--brown-dark); color: white; }
   .color-label { font-size: 8.5px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.3px; }
+
   .photo-note { margin-top: 10px; font-size: 9px; color: var(--brown-mid); font-style: italic; text-align: center; background: rgba(196,137,42,0.08); border: 1px dashed var(--gold); border-radius: 4px; padding: 8px 12px; }
   .photo-note strong { font-style: normal; color: var(--brown-dark); }
   .date-total-row { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 14px 20px; align-items: end; }
@@ -165,7 +170,8 @@
 
       <div class="section">
         <div class="section-title"><span class="paw">🐾</span> Color Selection <span style="font-size:8.5px;font-weight:400;font-style:italic;color:#8b5e2e;letter-spacing:1px;">(choose 1–3)</span></div>
-        <div class="color-grid">
+        <div class="color-limit-note" id="colorNote">Select up to 3 colors — tap to select or deselect</div>
+        <div class="color-grid" id="colorGrid">
           <label class="color-option"><input type="checkbox" name="colors" value="Navy Yarn"><div class="color-swatch" style="background:#1a2a4a;"></div><div class="color-cb"></div><div class="color-label">Navy Yarn</div></label>
           <label class="color-option"><input type="checkbox" name="colors" value="White Yarn"><div class="color-swatch" style="background:#f5f5f5;border-color:#bbb;"></div><div class="color-cb"></div><div class="color-label">White Yarn</div></label>
           <label class="color-option"><input type="checkbox" name="colors" value="Butter Yarn"><div class="color-swatch" style="background:#f5e17a;"></div><div class="color-cb"></div><div class="color-label">Butter Yarn</div></label>
@@ -178,7 +184,7 @@
           <label class="color-option"><input type="checkbox" name="colors" value="Blue"><div class="color-swatch" style="background:#2a65c8;"></div><div class="color-cb"></div><div class="color-label">Blue</div></label>
           <label class="color-option"><input type="checkbox" name="colors" value="Red Yarn"><div class="color-swatch" style="background:#cc2222;"></div><div class="color-cb"></div><div class="color-label">Red Yarn</div></label>
         </div>
-        <span class="error-msg" id="color-err" style="margin-top:6px;">Please select 1–3 colors</span>
+        <span class="error-msg" id="color-err" style="margin-top:6px;">Please select at least 1 color</span>
       </div>
 
       <div class="section">
@@ -197,11 +203,11 @@
         <div class="date-total-row">
           <div class="field">
             <label for="orderDate">Order Date</label>
-            <input type="date" id="orderDate" name="orderDate">
+            <input type="date" id="orderDate" name="orderDate" readonly style="color:var(--brown-mid);">
           </div>
           <div class="field">
             <label for="promiseDate">Promise Date (~2 weeks)</label>
-            <input type="date" id="promiseDate" name="promiseDate">
+            <input type="date" id="promiseDate" name="promiseDate" readonly style="color:var(--brown-mid);">
           </div>
           <div class="total-box">
             <span class="total-lock">🔒</span>
@@ -235,75 +241,110 @@
 <div class="qr-section">
   <div class="qr-text">
     <h3>🐾 Order Online</h3>
-    <p>Scan the QR code to fill out your custom rug order from your phone or computer. You can also text a photo reference to:</p>
+    <p>Scan the QR code or visit the link below to place your custom rug order!</p>
+    <span class="phone" style="font-size:11px; word-break:break-all;">https://cohenaguero.github.io/bearfoot-rugs-order-form-/</span><br>
     <span class="phone">(530) 448-3533</span>
   </div>
   <div id="qrcode"></div>
 </div>
 
 <script>
-  // Your Google Apps Script URL — paste yours here after deploying
   var SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
 
+  // ── Size cards ──
   document.querySelectorAll('.size-card').forEach(function(card) {
     card.addEventListener('click', function() {
       document.querySelectorAll('.size-card').forEach(function(c) { c.classList.remove('selected'); });
       card.classList.add('selected');
       card.querySelector('input[type="radio"]').checked = true;
-      var price = card.dataset.price;
       var display = document.getElementById('totalDisplay');
-      display.textContent = '$' + price + '.00';
+      display.textContent = '$' + card.dataset.price + '.00';
       display.classList.remove('empty', 'pop');
       void display.offsetWidth;
       display.classList.add('pop');
-      document.getElementById('totalValue').value = '$' + price + '.00';
+      document.getElementById('totalValue').value = '$' + card.dataset.price + '.00';
     });
   });
+
+  // ── Color selection: max 3, toggle on/off ──
+  function updateColors() {
+    var allOptions = document.querySelectorAll('.color-option');
+    var checkedCount = document.querySelectorAll('.color-option input:checked').length;
+    var note = document.getElementById('colorNote');
+
+    allOptions.forEach(function(opt) {
+      var isChecked = opt.querySelector('input').checked;
+      if (!isChecked && checkedCount >= 3) {
+        opt.classList.add('maxed');
+      } else {
+        opt.classList.remove('maxed');
+      }
+    });
+
+    if (checkedCount === 3) {
+      note.textContent = '3 colors selected (maximum) — tap a color to deselect it';
+      note.style.color = '#c4892a';
+    } else {
+      note.textContent = 'Select up to 3 colors — tap to select or deselect (' + checkedCount + '/3 selected)';
+      note.style.color = '#8b5e2e';
+    }
+  }
 
   document.querySelectorAll('.color-option').forEach(function(opt) {
-    opt.addEventListener('click', function() {
+    opt.addEventListener('click', function(e) {
+      e.preventDefault();
       var cb = opt.querySelector('input[type="checkbox"]');
       var checkedCount = document.querySelectorAll('.color-option input:checked').length;
+
+      // Allow deselect always; block select if at max
       if (!cb.checked && checkedCount >= 3) return;
+
       cb.checked = !cb.checked;
       opt.classList.toggle('selected', cb.checked);
-      var newCount = document.querySelectorAll('.color-option input:checked').length;
-      document.querySelectorAll('.color-option').forEach(function(o) {
-        var isChecked = o.querySelector('input').checked;
-        o.style.opacity = (!isChecked && newCount >= 3) ? '0.45' : '1';
-        o.style.pointerEvents = (!isChecked && newCount >= 3) ? 'none' : 'auto';
-      });
-      if (cb.checked) { opt.style.opacity = '1'; opt.style.pointerEvents = 'auto'; }
+      updateColors();
     });
-    opt.querySelector('input').addEventListener('click', function(e) { e.stopPropagation(); });
   });
 
-  var today = new Date();
-  var promise = new Date(today);
-  promise.setDate(promise.getDate() + 14);
-  var fmt = function(d) { return d.toISOString().split('T')[0]; };
-  document.getElementById('orderDate').value = fmt(today);
-  document.getElementById('promiseDate').value = fmt(promise);
+  updateColors();
 
+  // ── Auto-fill dates ──
+  function formatDate(d) {
+    var month = ('0' + (d.getMonth() + 1)).slice(-2);
+    var day = ('0' + d.getDate()).slice(-2);
+    return d.getFullYear() + '-' + month + '-' + day;
+  }
+  var today = new Date();
+  var promiseDate = new Date(today);
+  promiseDate.setDate(promiseDate.getDate() + 14);
+  document.getElementById('orderDate').value = formatDate(today);
+  document.getElementById('promiseDate').value = formatDate(promiseDate);
+
+  // ── Form submit ──
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var valid = true;
+
     var name = document.getElementById('name');
     if (!name.value.trim()) { name.classList.add('error'); document.getElementById('name-err').classList.add('show'); valid = false; }
     else { name.classList.remove('error'); document.getElementById('name-err').classList.remove('show'); }
+
     var phone = document.getElementById('phone');
     if (!phone.value.trim()) { phone.classList.add('error'); document.getElementById('phone-err').classList.add('show'); valid = false; }
     else { phone.classList.remove('error'); document.getElementById('phone-err').classList.remove('show'); }
+
     var size = document.querySelector('input[name="size"]:checked');
     if (!size) { document.getElementById('size-err').classList.add('show'); valid = false; }
     else { document.getElementById('size-err').classList.remove('show'); }
+
     var colors = document.querySelectorAll('input[name="colors"]:checked');
     if (colors.length === 0) { document.getElementById('color-err').classList.add('show'); valid = false; }
     else { document.getElementById('color-err').classList.remove('show'); }
+
     if (!valid) return;
 
     var payload = {
-      name: name.value.trim(), phone: phone.value.trim(),
+      name: name.value.trim(),
+      phone: phone.value.trim(),
       email: document.getElementById('email').value.trim(),
       size: size.value,
       colors: Array.from(colors).map(function(c){ return c.value; }).join(', '),
@@ -340,6 +381,7 @@
     });
   });
 
+  // ── QR Code ──
   new QRCode(document.getElementById("qrcode"), {
     text: "https://cohenaguero.github.io/bearfoot-rugs-order-form-/",
     width: 150, height: 150,
