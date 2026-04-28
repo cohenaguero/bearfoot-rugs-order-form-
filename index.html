@@ -249,7 +249,7 @@
 </div>
 
 <script>
-  var SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwAEjjy2co8r8aCPSgtbT7CEj9v6fxVR-TnxOkardrKgd1JxWvbdLrEfmtrECU2o-F4CA/exec';
 
   // ── Size cards ──
   document.querySelectorAll('.size-card').forEach(function(card) {
@@ -357,7 +357,7 @@
     document.getElementById('submitBtn').disabled = true;
     document.getElementById('sendingMsg').style.display = 'block';
 
-    if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_SCRIPT_URL_HERE') {
+    if (!SCRIPT_URL || SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwAEjjy2co8r8aCPSgtbT7CEj9v6fxVR-TnxOkardrKgd1JxWvbdLrEfmtrECU2o-F4CA/exec') {
       setTimeout(function() {
         document.getElementById('sendingMsg').style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
